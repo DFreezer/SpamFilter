@@ -1,26 +1,19 @@
 package com.dfreezer;
 
-/**
- * Created by 4567 on 29.05.2017.
- */
-
 /*
 NegativeTextAnalyzer должен конструироваться конструктором по-умолчанию.
  */
-public class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyzer{
+class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyzer{
+
+    private String[] negativeLabels = {":(", "=(", ":|"};
 
     @Override
-    protected String getKeywords() {
-        return null;
+    protected String[] getKeywords() {
+        return negativeLabels;
     }
 
     @Override
     protected Label getLabel() {
-        return null;
-    }
-
-    @Override
-    public Label processText(String text) {
-        return null;
+        return Label.NEGATIVE_TEXT;
     }
 }

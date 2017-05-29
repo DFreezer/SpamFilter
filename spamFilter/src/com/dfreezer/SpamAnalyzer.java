@@ -5,22 +5,22 @@ SpamAnalyzer должен конструироваться от массива �
 Объект этого класса должен сохранять в своем состоянии этот массив строк в приватном поле keywords.
  */
 
-public class SpamAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
 
-    private String keywords;
+class SpamAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
+
+    private String[] keywords;
+
+    SpamAnalyzer(String... keywords) {
+        this.keywords = keywords.clone();
+    }
 
     @Override
-    protected String getKeywords() {
-        return null;
+    protected String[] getKeywords() {
+        return this.keywords;
     }
 
     @Override
     protected Label getLabel() {
-        return null;
-    }
-
-    @Override
-    public Label processText(String text) {
-        return null;
+        return Label.SPAM;
     }
 }
